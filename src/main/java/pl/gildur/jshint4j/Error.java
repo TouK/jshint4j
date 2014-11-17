@@ -16,53 +16,41 @@ public class Error {
     private String scope;
     private String reason;
     
+    public Error(String id, String raw, String code, String evidence, int line, int character, String scope,
+            String reason) {
+        this.id = id;
+        this.raw = raw;
+        this.code = code;
+        this.evidence = evidence;
+        this.line = line;
+        this.character = character;
+        this.scope = scope;
+        this.reason = reason;
+    }
+    
     public String getId() {
         return id;
-    }
-    public void setId(String id) {
-        this.id = id;
     }
     public String getRaw() {
         return raw;
     }
-    public void setRaw(String raw) {
-        this.raw = raw;
-    }
     public String getCode() {
         return code;
-    }
-    public void setCode(String code) {
-        this.code = code;
     }
     public String getEvidence() {
         return evidence;
     }
-    public void setEvidence(String evidence) {
-        this.evidence = evidence;
-    }
     public int getLine() {
         return line;
-    }
-    public void setLine(int line) {
-        this.line = line;
     }
     public int getCharacter() {
         return character;
     }
-    public void setCharacter(int character) {
-        this.character = character;
-    }
     public String getScope() {
         return scope;
     }
-    public void setScope(String scope) {
-        this.scope = scope;
-    }
     public String getReason() {
         return reason;
-    }
-    public void setReason(String reason) {
-        this.reason = reason;
     }
     
     @Override

@@ -16,7 +16,13 @@ import org.mozilla.javascript.Scriptable;
  * @author Piotr Wolny
  */
 public class JsHint {
-    
+    /**
+     * Runs JSHint on given JavaScript source code.
+     * 
+     * @param source JavaScript source code
+     * @param options JSHint options
+     * @return JSHint errors
+     */
     public List<Error> lint(String source, String options) {
         if (source == null) {
             throw new NullPointerException("Source must not be null.");
@@ -46,16 +52,15 @@ public class JsHint {
     }
 
     private Error toError(Map<String, ?> jsError) {
-        Error error = new Error();
-        error.setId(Context.toString(jsError.get("id")));
-        error.setRaw(Context.toString(jsError.get("raw")));
-        error.setCode(Context.toString(jsError.get("code")));
-        error.setEvidence(Context.toString(jsError.get("evidence")));
-        error.setLine((int) Context.toNumber(jsError.get("line")));
-        error.setCharacter((int) Context.toNumber(jsError.get("character")));
-        error.setScope(Context.toString(jsError.get("scope")));
-        error.setReason(Context.toString(jsError.get("reason")));
-        return error;
+        return new Error(
+                Context.toString(jsError.get("id")),
+                Context.toString(jsError.get("raw")),
+                Context.toString(jsError.get("code")),
+                Context.toString(jsError.get("evidence")),
+                (int) Context.toNumber(jsError.get("line")),
+                (int) Context.toNumber(jsError.get("character")),
+                Context.toString(jsError.get("scope")),
+                Context.toString(jsError.get("reason")));
     }
 
     private void evaluateJSHint(Context cx, Scriptable scope) {

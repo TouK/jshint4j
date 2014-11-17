@@ -61,8 +61,14 @@ public class JsHintTest {
         Assert.assertNotNull(errors);
         Assert.assertEquals(1, errors.size());
         Error error = errors.get(0);
+        Assert.assertEquals("(error)", error.getId());
+        Assert.assertEquals("Missing semicolon.", error.getRaw());
         Assert.assertEquals("W033", error.getCode());
+        Assert.assertEquals(source, error.getEvidence());
         Assert.assertEquals(1, error.getLine());
+        Assert.assertEquals(27, error.getCharacter());
+        Assert.assertEquals("(main)", error.getScope());
+        Assert.assertEquals("Missing semicolon.", error.getReason());
     }
     
     @Test
@@ -78,7 +84,14 @@ public class JsHintTest {
         Assert.assertNotNull(errors);
         Assert.assertEquals(1, errors.size());
         Error error = errors.get(0);
+        Assert.assertEquals("(error)", error.getId());
+        Assert.assertEquals("'{a}' is not defined.", error.getRaw());
         Assert.assertEquals("W117", error.getCode());
+        Assert.assertEquals(source, error.getEvidence());
         Assert.assertEquals(1, error.getLine());
+        Assert.assertEquals(26, error.getCharacter());
+        Assert.assertEquals("(main)", error.getScope());
+        Assert.assertEquals("'x' is not defined.", error.getReason());
+
     }
 }
