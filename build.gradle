@@ -36,44 +36,46 @@ signing {
     sign configurations.archives
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-            pom.project {
-                name 'jshint4j'
-                packaging 'jar'
-                // optionally artifactId can be defined here
-                description 'Java wrapper for JSHint (http://www.jshint.com/).'
-                url 'https://github.com/gildur/jshint4j'
-
-                scm {
-                    connection 'https://github.com/gildur/jshint4j.git'
-                    developerConnection 'https://github.com/gildur/jshint4j.git'
+                pom.project {
+                    name 'jshint4j'
+                    packaging 'jar'
+                    // optionally artifactId can be defined here
+                    description 'Java wrapper for JSHint (http://www.jshint.com/).'
                     url 'https://github.com/gildur/jshint4j'
-                }
 
-                licenses {
-                    license {
-                        name 'MIT'
-                        url 'https://raw.githubusercontent.com/gildur/jshint4j/master/LICENSE'
+                    scm {
+                        connection 'https://github.com/gildur/jshint4j.git'
+                        developerConnection 'https://github.com/gildur/jshint4j.git'
+                        url 'https://github.com/gildur/jshint4j'
                     }
-                }
 
-                developers {
-                    developer {
-                        id 'gildur'
-                        name 'Piotr Wolny'
-                        email 'gildur@gmail.com'
+                    licenses {
+                        license {
+                            name 'MIT'
+                            url 'https://raw.githubusercontent.com/gildur/jshint4j/master/LICENSE'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'gildur'
+                            name 'Piotr Wolny'
+                            email 'gildur@gmail.com'
+                        }
                     }
                 }
             }
