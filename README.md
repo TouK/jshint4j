@@ -3,6 +3,8 @@ jshint4j
 
 Java wrapper for JSHint (http://www.jshint.com/).
 
+[![Build Status](https://travis-ci.org/gildur/jshint4j.svg?branch=master)](https://travis-ci.org/gildur/jshint4j)
+
 Usage
 -----
 
@@ -16,3 +18,8 @@ for (Error error : errors) {
             error.getReason());
 }
 ```
+
+License
+-------
+
+<a href="https://raw.githubusercontent.com/gildur/jshint4j/master/LICENSE">MIT</a>
