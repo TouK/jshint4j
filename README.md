@@ -8,13 +8,25 @@ Java wrapper for JSHint (http://www.jshint.com/).
 Usage
 -----
 
+Add dependency to your project:
+```xml
+    <dependency>
+      <groupId>pl.gildur</groupId>
+      <artifactId>jshint4j</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+```
+
+Use it in your code:
 ```java
 JsHint jsHint = new JsHint();
 String source = "function test() { return x; }";
 String options = "{ undef: true }";
 List<Error> errors = jsHint.lint(source, options);
 for (Error error : errors) {
-    System.out.printf("JSHint error on line %d, character %d: %s", error.getLine(), error.getCharacter(),
+    System.out.printf("JSHint error on line %d, character %d: %s",
+            error.getLine(),
+            error.getCharacter(),
             error.getReason());
 }
 ```
