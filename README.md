@@ -10,11 +10,11 @@ Usage
 
 Add dependency to your project:
 ```xml
-    <dependency>
-      <groupId>pl.gildur</groupId>
-      <artifactId>jshint4j</artifactId>
-      <version>1.0.0</version>
-    </dependency>
+<dependency>
+    <groupId>pl.gildur</groupId>
+    <artifactId>jshint4j</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
 Use it in your code:
