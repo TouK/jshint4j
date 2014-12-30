@@ -13,7 +13,7 @@ Add dependency to your project:
 <dependency>
     <groupId>pl.gildur</groupId>
     <artifactId>jshint4j</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
