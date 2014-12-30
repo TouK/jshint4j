@@ -1,8 +1,11 @@
 package pl.gildur.jshint4j;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -32,8 +35,8 @@ public class JsHintTest {
         List<Error> errors = jsHint.lint(source, null);
         
         // then
-        Assert.assertNotNull(errors);
-        Assert.assertTrue(errors.isEmpty());
+        assertNotNull(errors);
+        assertTrue(errors.isEmpty());
     }
     
     @Test
@@ -45,8 +48,8 @@ public class JsHintTest {
         List<Error> errors = jsHint.lint(source, null);
         
         // then
-        Assert.assertNotNull(errors);
-        Assert.assertTrue(errors.isEmpty());
+        assertNotNull(errors);
+        assertTrue(errors.isEmpty());
     }
     
     @Test
@@ -58,17 +61,17 @@ public class JsHintTest {
         List<Error> errors = jsHint.lint(source, null);
         
         // then
-        Assert.assertNotNull(errors);
-        Assert.assertEquals(1, errors.size());
+        assertNotNull(errors);
+        assertEquals(1, errors.size());
         Error error = errors.get(0);
-        Assert.assertEquals("(error)", error.getId());
-        Assert.assertEquals("Missing semicolon.", error.getRaw());
-        Assert.assertEquals("W033", error.getCode());
-        Assert.assertEquals(source, error.getEvidence());
-        Assert.assertEquals(1, error.getLine());
-        Assert.assertEquals(27, error.getCharacter());
-        Assert.assertEquals("(main)", error.getScope());
-        Assert.assertEquals("Missing semicolon.", error.getReason());
+        assertEquals("(error)", error.getId());
+        assertEquals("Missing semicolon.", error.getRaw());
+        assertEquals("W033", error.getCode());
+        assertEquals(source, error.getEvidence());
+        assertEquals(1, error.getLine());
+        assertEquals(27, error.getCharacter());
+        assertEquals("(main)", error.getScope());
+        assertEquals("Missing semicolon.", error.getReason());
     }
     
     @Test
@@ -81,17 +84,29 @@ public class JsHintTest {
         List<Error> errors = jsHint.lint(source, options);
         
         // then
-        Assert.assertNotNull(errors);
-        Assert.assertEquals(1, errors.size());
+        assertNotNull(errors);
+        assertEquals(1, errors.size());
         Error error = errors.get(0);
-        Assert.assertEquals("(error)", error.getId());
-        Assert.assertEquals("'{a}' is not defined.", error.getRaw());
-        Assert.assertEquals("W117", error.getCode());
-        Assert.assertEquals(source, error.getEvidence());
-        Assert.assertEquals(1, error.getLine());
-        Assert.assertEquals(26, error.getCharacter());
-        Assert.assertEquals("(main)", error.getScope());
-        Assert.assertEquals("'x' is not defined.", error.getReason());
+        assertEquals("(error)", error.getId());
+        assertEquals("'{a}' is not defined.", error.getRaw());
+        assertEquals("W117", error.getCode());
+        assertEquals(source, error.getEvidence());
+        assertEquals(1, error.getLine());
+        assertEquals(26, error.getCharacter());
+        assertEquals("(main)", error.getScope());
+        assertEquals("'x' is not defined.", error.getReason());
+    }
+    
+    @Test
+    public void shouldReturnLotsOfErrorsForInvalidCode() {
+        // given
+        String source = "function test( { return x;";
 
+        // when
+        List<Error> errors = jsHint.lint(source, null);
+        
+        // then
+        assertNotNull(errors);
+        assertEquals(51, errors.size());
     }
 }

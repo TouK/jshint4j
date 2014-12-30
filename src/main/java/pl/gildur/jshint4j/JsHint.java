@@ -46,7 +46,9 @@ public class JsHint {
         @SuppressWarnings("unchecked")
         List<Map<String, ?>> jsErrors = (List<Map<String, ?>>) jsHintFunction.get("errors", jsHintFunction);
         for (Map<String, ?> jsError : jsErrors) {
-            errors.add(toError(jsError));
+            if (jsError != null) {
+                errors.add(toError(jsError));
+            }
         }
         return errors;
     }
