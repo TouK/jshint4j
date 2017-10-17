@@ -37,7 +37,7 @@ signing {
     sign configurations.archives
 }
 
-if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
+if (hasProperty('sonatypeUsername') && hasProperty('sonatypePassword')) {
     uploadArchives {
         repositories {
             mavenDeployer {
