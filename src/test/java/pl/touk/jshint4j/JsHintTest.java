@@ -1,16 +1,14 @@
-package pl.gildur.jshint4j;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
+package pl.touk.jshint4j;
 
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.junit.Assert.*;
+
 /**
  * {@link JsHint} tests.
- * 
+ *
  * @author Piotr Wolny
  */
 public class JsHintTest {
@@ -33,12 +31,12 @@ public class JsHintTest {
 
         // when
         List<Error> errors = jsHint.lint(source, null);
-        
+
         // then
         assertNotNull(errors);
         assertTrue(errors.isEmpty());
     }
-    
+
     @Test
     public void shouldReturnNoErrorsForSimpleSource() {
         // given
@@ -46,12 +44,12 @@ public class JsHintTest {
 
         // when
         List<Error> errors = jsHint.lint(source, null);
-        
+
         // then
         assertNotNull(errors);
         assertTrue(errors.isEmpty());
     }
-    
+
     @Test
     public void shouldReturnErrorForMissingSemicolon() {
         // given
@@ -59,7 +57,7 @@ public class JsHintTest {
 
         // when
         List<Error> errors = jsHint.lint(source, null);
-        
+
         // then
         assertNotNull(errors);
         assertEquals(1, errors.size());
@@ -73,7 +71,7 @@ public class JsHintTest {
         assertEquals("(main)", error.getScope());
         assertEquals("Missing semicolon.", error.getReason());
     }
-    
+
     @Test
     public void shouldReturnErrorForUndefinedVariable() {
         // given
@@ -82,7 +80,7 @@ public class JsHintTest {
 
         // when
         List<Error> errors = jsHint.lint(source, options);
-        
+
         // then
         assertNotNull(errors);
         assertEquals(1, errors.size());
@@ -96,7 +94,7 @@ public class JsHintTest {
         assertEquals("(main)", error.getScope());
         assertEquals("'x' is not defined.", error.getReason());
     }
-    
+
     @Test
     public void shouldReturnLotsOfErrorsForInvalidCode() {
         // given
@@ -104,9 +102,9 @@ public class JsHintTest {
 
         // when
         List<Error> errors = jsHint.lint(source, null);
-        
+
         // then
         assertNotNull(errors);
-        assertEquals(51, errors.size());
+        assertEquals(7, errors.size());
     }
 }

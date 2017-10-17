@@ -3,7 +3,7 @@ jshint4j
 
 Java wrapper for JSHint (http://www.jshint.com/).
 
-[![Build Status](https://travis-ci.org/gildur/jshint4j.svg?branch=master)](https://travis-ci.org/gildur/jshint4j)
+[![Build Status](https://travis-ci.org/TouK/jshint4j.svg?branch=master)](https://travis-ci.org/TouK/jshint4j)
 
 Usage
 -----
@@ -11,9 +11,9 @@ Usage
 Add dependency to your project:
 ```xml
 <dependency>
-    <groupId>pl.gildur</groupId>
+    <groupId>pl.touk</groupId>
     <artifactId>jshint4j</artifactId>
-    <version>1.0.1</version>
+    <version>2.9.5</version>
 </dependency>
 ```
 
@@ -31,7 +31,12 @@ for (Error error : errors) {
 }
 ```
 
+Credits
+-------
+
+Original version of JsHint4J was developed by Piotr Wolny (https://github.com/gildur/jshint4j).
+
 License
 -------
 
-<a href="https://raw.githubusercontent.com/gildur/jshint4j/master/LICENSE">MIT</a>
+<a href="https://raw.githubusercontent.com/TouK/jshint4j/master/LICENSE">MIT</a>

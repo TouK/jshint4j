@@ -1,21 +1,21 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-group = 'pl.gildur'
-version = '1.0.1'
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+group = 'pl.touk'
+version = '2.9.5'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     jcenter()
 }
 
 dependencies {
-    compile 'org.mozilla:rhino:1.7R4'
+    compile 'org.mozilla:rhino:1.7.7.2'
 
-    testCompile 'junit:junit:4.11'
+    testCompile 'junit:junit:4.12'
 }
 
 task javadocJar(type: Jar) {
@@ -56,18 +56,19 @@ if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
                     packaging 'jar'
                     // optionally artifactId can be defined here
                     description 'Java wrapper for JSHint (http://www.jshint.com/).'
-                    url 'https://github.com/gildur/jshint4j'
+                    url 'https://github.com/TouK/jshint4j'
 
                     scm {
-                        connection 'https://github.com/gildur/jshint4j.git'
-                        developerConnection 'https://github.com/gildur/jshint4j.git'
+                        connection 'https://github.com/TouK/jshint4j.git'
+                        developerConnection 'https://github.com/TouK/jshint4j.git'
+                        url 'https://github.com/TouK/jshint4j'
                         url 'https://github.com/gildur/jshint4j'
                     }
 
                     licenses {
                         license {
                             name 'MIT'
-                            url 'https://raw.githubusercontent.com/gildur/jshint4j/master/LICENSE'
+                            url 'https://raw.githubusercontent.com/TouK/jshint4j/master/LICENSE'
                         }
                     }
 
@@ -76,6 +77,10 @@ if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
                             id 'gildur'
                             name 'Piotr Wolny'
                             email 'gildur@gmail.com'
+                        }
+                        developer {
+                            id 'tomasz_kalkosinski'
+                            name 'Tomasz Kalkosinski'
                         }
                     }
                 }

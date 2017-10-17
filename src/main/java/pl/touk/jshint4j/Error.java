@@ -1,8 +1,8 @@
-package pl.gildur.jshint4j;
+package pl.touk.jshint4j;
 
 /**
  * JSHint error.
- * 
+ *
  * @author Piotr Wolny
  */
 public class Error {
@@ -15,7 +15,7 @@ public class Error {
     private int character;
     private String scope;
     private String reason;
-    
+
     public Error(String id, String raw, String code, String evidence, int line, int character, String scope,
             String reason) {
         this.id = id;
@@ -27,7 +27,7 @@ public class Error {
         this.scope = scope;
         this.reason = reason;
     }
-    
+
     public String getId() {
         return id;
     }
@@ -52,7 +52,7 @@ public class Error {
     public String getReason() {
         return reason;
     }
-    
+
     @Override
     public String toString() {
         return "Error [id=" + id + ", raw=" + raw + ", code=" + code + ", evidence=" + evidence + ", line=" + line
